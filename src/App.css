@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) ), url('../src/Image/Rectangle\ 1.png');
+  background-size: cover;
+  background-position: center;
+  min-height:100vh;
+  background-repeat: no-repeat;
 }
 
 .App-logo {
