@@ -1,11 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchLocation } from '@fortawesome/free-solid-svg-icons'
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Form, FormControl, InputGroup, Nav, Navbar } from 'react-bootstrap';
 import logo from '../../Logo.png'
 import './Header.css'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { userContext } from '../../App';
+import { Avatar } from '@material-ui/core';
 const Header = () => {
+    const [loginUser, setLoginUser] = useContext(userContext);
+    const history = useHistory();
+    const handleHistory = () =>{
+        history.push('/signIn');
+    }
     return (
         <div className='container'>
           <div>
@@ -23,7 +30,14 @@ const Header = () => {
         <Link to='/blog'>Blog</Link>
         <Link to='/contact'>Contact</Link>
         </Nav>
-        <button className ="login-btn">Login</button>
+        {
+            loginUser.isLogin ?<h6 style={{marginRight:'10px'}}>{loginUser.name}</h6> :<button onClick={handleHistory} className ="login-btn">Login</button>
+        }
+
+        {
+           loginUser.isLogin && <Avatar  className='avater' alt="Cindy Baker" src={loginUser.photoURL} />
+        }
+
     </Navbar.Collapse>
     </Navbar>
           </div>

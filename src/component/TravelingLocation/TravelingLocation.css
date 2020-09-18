@@ -1,19 +1,25 @@
 .toFrom{
     margin-right: 20px;
 }
+.location-informations{
+    margin-top:45px;
+}
 .formField{
     background-color: white;
     padding-top:15px;
-    padding-left: 35px;
-    padding-bottom: 50px;
+    padding-left: 25px;
+    padding-bottom: 35px;
     border-radius: 5px;
-    margin-right:65px;
+    margin-right:55px;
 }
 .originToDestination input{
     border:none;
     border-radius:5px;
     padding:10px 112px;
     background-color:#F2F2F2;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
 }
 .formField p{
     color: gray;
@@ -30,7 +36,7 @@
 .start-booking{
     align-items: center;
     text-align:center;
-    margin-top:10px;
+    margin-top:20px;
     background: #F9A51A;
     padding: 15px 152px;
     margin-left: 5px;

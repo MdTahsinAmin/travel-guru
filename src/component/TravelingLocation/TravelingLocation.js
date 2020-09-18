@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './TravelingLocation.css'
 const TravelingLocation = () => {
 
@@ -24,23 +24,22 @@ const TravelingLocation = () => {
           Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds.
          North, sea turtles breed on nearby Sonadia Island.`
     }
-
-
+  
     return (
         <div className='container'>
-            <div className="row location-information">
+            <div className="row location-informations">
                 <div className="col-md-6">
                     <h1 className='location-title'>{locationName}</h1>
                     { locationName && <p className='location-description'>{description}</p>}
                 </div>
-                <div className="col-md-6 ">
+                <div className="col-md-6">
                       <div className='formField'>
                           <form action="">
                             <div className='originToDestination'>
                             <p>Origin</p>
                             <input type="text" placeholder='Enter your Origin'/> <br/>
                             <p>Destination</p>
-                            <input type="text" placeholder='Enter your Destination'/> <br/>
+                            <input type="text" value={locationName} placeholder='Enter your Destination'/> <br/>
                             </div> <br/>
                            <div className='d-flex calenderForm'>
                                <div className='toFrom'>
@@ -52,7 +51,7 @@ const TravelingLocation = () => {
                                <input type="date" id="date" name="date" placeholder="Enter date"/>
                                </div>
                            </div>
-                           <button className='start-booking'>Start Booking</button>
+                           <Link to='/hotelInformation'><button className='start-booking'>Start Booking</button></Link>
                           </form>
                       </div>
                 </div>

@@ -12,7 +12,7 @@ const Home = () => {
     ];
 
     return (
-        <div className='container'>
+        <div className='container home'>
              <div className="row location-information">
                  <div className="col-md-4">
                      <h1 className='location-title'>Cox's Bazar</h1>
