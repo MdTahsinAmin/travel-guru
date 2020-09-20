@@ -30,14 +30,16 @@ const Header = () => {
         <Link to='/blog'>Blog</Link>
         <Link to='/contact'>Contact</Link>
         </Nav>
-        {
-            loginUser.isLogin ?<h6 style={{marginRight:'10px'}}>{loginUser.name}</h6> :<button onClick={handleHistory} className ="login-btn">Login</button>
+        { 
+         loginUser.success && <p style={{fontSize:'16px',color:'white',marginRight:'36px'}}>{loginUser.displayName}</p>
         }
-
-        {
-           loginUser.isLogin && <Avatar  className='avater' alt="Cindy Baker" src={loginUser.photoURL} />
+        { 
+         loginUser.success && <button style={{marginLeft:'12px'}}  className ="login-btn">Logout</button>
         }
-
+        {
+            !loginUser.success && <button onClick={handleHistory} className ="login-btn">Login</button>
+        }
+  
     </Navbar.Collapse>
     </Navbar>
           </div>

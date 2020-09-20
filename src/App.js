@@ -13,6 +13,8 @@ import HotelInformation from './component/HotelInformation/HotelInformation';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 import Login from './component/Login/Login';
 import SignIn from './component/Login/SignIn';
+import Contact from './component/Contact/Contact';
+import Descriptin from './component/Description/Descriptin';
 
 
 export const userContext = createContext();
@@ -41,6 +43,12 @@ function App() {
            </Route>
            <Route path='/signIn'>
              <SignIn></SignIn>
+           </Route>
+           <Route path='/description'>
+             <Descriptin></Descriptin>
+           </Route>
+           <Route path ='/contact'>
+              <Contact></Contact>
            </Route>
             <Router exact path='/'>
               <Home></Home>

@@ -20,6 +20,7 @@
     text-align: center;
     font-size: 18px;
     font-weight: 500;
+    margin-bottom: 8px;
 }
 .formField p{
     color: gray;
@@ -27,8 +28,9 @@
 .calenderForm input{
     border:none;
     border-radius:5px;
+    margin-right:0px;
     background-color:#F2F2F2;
-    padding:10px;
+    padding:10px 22px;
 }
 ::placeholder{
     color:grey;
@@ -37,8 +39,9 @@
     align-items: center;
     text-align:center;
     margin-top:20px;
+    margin-left: 5px;
     background: #F9A51A;
-    padding: 15px 152px;
+    padding: 15px 160px;
     margin-left: 5px;
     border-radius: 5px;
     border: none;

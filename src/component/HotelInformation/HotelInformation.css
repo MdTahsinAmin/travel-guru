@@ -1,3 +1,15 @@
 .hotelInformation{
-    background-color: while;
+    width:50%;
+}
+.hotel-container{
+     border-radius:5px;
+     background-color:beige;
+     width:100%;
+     padding-left: 80px;
+     padding-right: 80px;
+     padding-bottom: 10px;
+}
+.google-map{
+    text-align: center;
+    margin-left:50px;
 }

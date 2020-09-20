@@ -1,0 +1,17 @@
+.contact-container{
+    background-color:white;
+    text-align:center;
+    border-radius:5px;
+    padding-bottom: 10px;
+    padding-top:10px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top:75px;
+}
+.contact-container h4 p{
+    color: gray;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+
+}

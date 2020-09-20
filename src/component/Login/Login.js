@@ -9,7 +9,7 @@ import { Button } from '@material-ui/core';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
-import { continueWithFacebook, continueWithGoogle, initializeLoginFramwork} from './LoginManager';
+import { continueWithFacebook, continueWithGoogle, createAnAccountWithEmailAndPassword, initializeLoginFramwork} from './LoginManager';
 import { userContext } from '../../App';
 import { useForm } from 'react-hook-form';
 
@@ -25,22 +25,33 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Login = () => {
-    const { register, errors, handleSubmit } = useForm({});
-     const password = useRef({});
-     
+     initializeLoginFramwork();
+    
+    const { register, errors, handleSubmit,watch } = useForm({
+        mode: "onChange"
+    });
+    const password = useRef({});
+    password.current = watch("password", "");
+    
+    
+
     const history = useHistory();
 
     const location = useLocation();
+
+    const createAccountHistory = useHistory();
+
+    const createAccountLocation = useLocation();
      
     let { from } = location.state || { from: { pathname: "/" } };
+
+    let { extra } = location.state || { extra: { pathname: "/signIn" } };
+
+
        
     const [loginUser, setLoginUser] = useContext(userContext);
-    
-   
-   
+    console.log(loginUser);
     const classes = useStyles();
-    
-    initializeLoginFramwork();
 
     const googleSignIn = () =>{
         continueWithGoogle().then(res=>{
@@ -56,87 +67,100 @@ const Login = () => {
         })
    }
 
-   const onSubmit =  (data) => {
+    const onSubmit =  data => {
+       const {firstName,lastName,email,password,password_repeat} = data;
        
-   };
-
+       createAnAccountWithEmailAndPassword(firstName,lastName,email,password).then(res=>{
+              setLoginUser(...loginUser,...res);
+              //console.log(loginUser);
+              createAccountHistory.replace(extra);
+       })
+    };
+    
+   
     return (
         <div className='container'>
             <div className='form-box'>
             <h4 style={{marginLeft:'25px'}}>Create an account</h4>
              <div className ='input-group'>
              <form onSubmit={e => e.preventDefault()}>
-        <label htmlFor="firstName">First Name</label>
-        <input
-            name="firstName"
-            placeholder="Bill"
-            ref={register({
-            required: "this is a required",
-            maxLength: {
-                value: 2,
-                message: "Max length is 2"
-            }
-            })}
-        />
-        {errors.firstName && <p>{errors.firstName.message}</p>}
+             <label htmlFor="firstName"></label>
+                <input
+                   className='input-fields'
+                    name="firstName"
+                    placeholder="First Name"
+                    ref={register({
+                    required: "this is a required",
+                    minLength: {
+                        value: 2,
+                        message: "Min length is 2"
+                    }
+                    })}
+                    required   />
+      {errors.firstName && <p className='error-show'>{errors.firstName.message}</p>}
 
-        <label htmlFor="lastName">Last Name</label>
-        <input
-            name="lastName"
-            placeholder="Luo"
-            ref={register({
-            required: "this is required",
-            minLength: {
-                value: 2,
-                message: "Min length is 2"
-            }
-            })}
-        />
-        {errors.lastName && <p>{errors.lastName.message}</p>}
+         <label htmlFor="lastName"></label>
+            <input
+                className='input-fields'
+                name="lastName"
+                placeholder="Last Name"
+                ref={register({
+                required: "this is required",
+                minLength: {
+                    value: 2,
+                    message: "Min length is 2"
+                }
+                })}
+                required />
+      {errors.lastName && <p className='error-show'>{errors.lastName.message}</p>}
 
-        <label htmlFor="email">Email</label>
-        <input
-            name="email"
-            placeholder="bluebill1049@hotmail.com"
-            type="text"
-            ref={register({
-            required: "this is required",
-            pattern: {
-                value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: "Invalid email address"
-            }
-            })}
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-        <label>Password</label>
-        <input
-            name="password"
-            type="password"
-            ref={register({
-            required: "You must specify a password",
-            minLength: {
-                value: 8,
-                message: "Password must have at least 8 characters"
-            }
-            })}
-        />
-        {errors.password && <p>{errors.password.message}</p>}
-
-        <label>Repeat password</label>
-        <input
-            name="password_repeat"
-            type="password"
-            ref={register({
-            validate: value =>
-                value === password.current || "The passwords do not match"
-            })}
-        />
-        {errors.password_repeat && <p>{errors.password_repeat.message}</p>}
-
-        <input type="submit" onClick={handleSubmit(onSubmit)} />
+      <label htmlFor="email"></label>
+      <input
+        className='input-fields'
+        name="email"
+        placeholder="example@gmail.com"
+        type="email"
+        ref={register({
+          required: "this is required",
+          pattern: {
+            value: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            message: "Invalid email address"
+          }
+        })}
+       required/>
+      {errors.email && <p className='error-show'>{errors.email.message}</p>}
+            <label></label>
+            <input
+                className='input-fields'
+                name="password"
+                type="password"
+                placeholder="Password"
+                ref={register({
+                required: "You must specify a password",
+                minLength: {
+                    value: 8,
+                    message: "Password must have at least 8 characters"
+                }
+                })}
+                required />
+            {errors.password && <p className='error-show'>{errors.password.message}</p>}
+            
+            <label></label>
+            <input
+                className='input-fields'
+                name="password_repeat"
+                placeholder="Confirmed Password"
+                type="password"
+                ref={register({
+                validate: value =>
+                    value === password.current || "The passwords do not match"
+                })}
+                required />
+            {errors.password_repeat && <p className='error-show'>{errors.password_repeat.message}</p>}
+            {!loginUser.success && <p className='error-shows'>{loginUser.error}</p>}
+           <input className='submit-btn' type="submit" value='Create an account' onClick={handleSubmit(onSubmit)} />
     </form>
-                 <p style={{marginLeft:'75px'}}>Already have an account.<Link  style={{color:'#F9A51A'}}to='/signIn'>Login</Link></p>
-               
+            <p style={{marginLeft:'75px'}}>Already have an account.<Link  style={{color:'#F9A51A'}}to='/signIn'>Login</Link></p>
              </div>
              <div className='googleOrFb'>
               <Button  onClick={googleSignIn} variant="outlined"><Avatar  className='avater' alt="Cindy Baker" src={googleLogo}  className={classes.small}/> Google </Button>

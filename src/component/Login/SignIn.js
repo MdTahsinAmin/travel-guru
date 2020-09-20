@@ -1,13 +1,14 @@
 import { Avatar, Button, makeStyles } from '@material-ui/core';
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import './SignIn.css'
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import googleLogo from '../../Icon/google.png'
 import facebookLogo from '../../Icon/fb.png'
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { continueWithFacebook, continueWithGoogle, initializeLoginFramwork } from './LoginManager';
+import { continueWithFacebook, continueWithGoogle, initializeLoginFramwork, signInWithEmailAndPassword,resetPassword } from './LoginManager';
 import { userContext } from '../../App';
+import { useForm } from 'react-hook-form';
 const useStyles = makeStyles((theme) => ({
     small: {
         width: theme.spacing(3),
@@ -15,16 +16,21 @@ const useStyles = makeStyles((theme) => ({
       },
 }));
 const SignIn = () => {
-    
+    const { register, errors, handleSubmit,watch } = useForm({
+        mode: "onChange"
+    });
+    const password = useRef({});
+
     const history = useHistory();
 
     const location = useLocation();
      
     let { from } = location.state || { from: { pathname: "/hotelInformation" } };
+    let { extra } = location.state || { extra: { pathname: "/home" } };
 
 
     const [loginUser, setLoginUser] = useContext(userContext);
-   
+    
     const classes = useStyles();
    
     initializeLoginFramwork();
@@ -42,27 +48,67 @@ const SignIn = () => {
             history.replace(from);
         })
    }
-
-
-
-
+  
+   const onSubmit =  data =>{
+       const {email, password} =data;
+       let newUser ={...loginUser};
+       signInWithEmailAndPassword(email, password).then(res =>{
+                const login = {...newUser,...res};
+                setLoginUser(login);
+                if(loginUser.destination){
+                 history.replace(from);
+                }
+                else{
+                    history.replace(extra);
+                }
+                
+       })
+   }
+   console.log(loginUser);
     return (
         <div className='container'>
            <div className='input-box'>
+          
             <h4 style={{marginLeft:'25px'}}>Login</h4>
              <div className ='input-group'>
-                 <form>
-                     <input type="email"      className='input-fields'  name="email"      id=""  placeholder='Email address' required/> <br/>
-                         
-                     <input type="password"  className='input-fields'  name="password"   id=""  placeholder='Password' required/><br/>
+                 <form onSubmit={e => e.preventDefault()}>
+          <label htmlFor="email"></label>
+            <input
+                className='input-fields'
+                name="email"
+                placeholder="example@gmail.com"
+                type="email"
+                ref={register({
+                required: "this is required",
+                pattern: {
+                    value: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: "Invalid email address"
+                }
+                })}
+            required/>
+        <label htmlFor='password'></label>
+            <input
+                className='input-fields'
+                name="password"
+                type="password"
+                placeholder="Password"
+                ref={register({
+                required: "You must specify a password",
+                minLength: {
+                    value: 8,
+                    message: "Password must have at least 8 characters"
+                }
+                })}
+                required />
                 <div className='d-flex justify-content-between'>
                     <div>
                     <input className='checkbox-light' type="checkbox" name="rememberMe" id=""/>
                     <label style={{fontWeight: '500'}} htmlFor="rememberMe">Remember Me</label>
                     </div>
-                    <Link style={{color:'#F9A51A'}}to='/forgetPassword'>Forget Password</Link>
+                    <Link className='forgetPassword' style={{color:'#F9A51A'}}>Forget Password</Link>
                 </div>
-                     <input type="submit" className='submit-btn' value="Login"/>
+                { loginUser.verifyEmail}
+                     <input type="submit" className='submit-btn' value="Login" onClick={handleSubmit(onSubmit)} />
                  </form>
                  <p style={{marginLeft:'75px'}}>Don't have an account.<Link  style={{color:'#F9A51A'}}to='/login'>Create an account</Link></p>
              </div>

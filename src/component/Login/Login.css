@@ -10,7 +10,7 @@
 }
 .input-group{
     margin-top:10px;
-    margin-left: 50px;
+    margin-left: 60px;
     width: 280px;
     line-height:15px;
     transition: .5s;
@@ -59,4 +59,14 @@
     margin-left: 250px;
     font-size: 18px;
     color:white;
+}
+.error-show{
+     color: #bf1650;
+}
+.error-show::before {
+    display: inline;
+    content: "⚠ ";
+}  
+.error-shows{
+    color: #bf1650;
 }
