@@ -54,30 +54,34 @@ const Login = () => {
     const classes = useStyles();
 
     const googleSignIn = () =>{
+        let newUser ={...loginUser};
         continueWithGoogle().then(res=>{
-             setLoginUser(res);
+            const login = {...newUser,...res};
+            setLoginUser(login);
              history.replace(from);
         })
     }
 
    const facebookSignIn = () =>{
+         let newUser ={...loginUser};
         continueWithFacebook().then(res=>{
-            setLoginUser(res);
-            history.replace(from);
+            const login = {...newUser,...res};
+            setLoginUser(login);
+             history.replace(from);
         })
    }
 
     const onSubmit =  data => {
        const {firstName,lastName,email,password,password_repeat} = data;
-       
+         let newUser ={...loginUser};
        createAnAccountWithEmailAndPassword(firstName,lastName,email,password).then(res=>{
-              setLoginUser(...loginUser,...res);
+                const login = {...newUser,...res};
+                setLoginUser(login);
               //console.log(loginUser);
               createAccountHistory.replace(extra);
        })
     };
     
-   
     return (
         <div className='container'>
             <div className='form-box'>

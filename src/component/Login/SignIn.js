@@ -36,16 +36,30 @@ const SignIn = () => {
     initializeLoginFramwork();
 
     const googleSignIn = () =>{
+        let newUser ={...loginUser};
         continueWithGoogle().then(res=>{
-             setLoginUser(res);
+            const login = {...newUser,...res};
+            setLoginUser(login);
+            if(loginUser.destination){
              history.replace(from);
+            }
+            else{
+                history.replace(extra);
+            }
         })
     }
 
    const facebookSignIn = () =>{
+     let newUser ={...loginUser};
         continueWithFacebook().then(res=>{
-            setLoginUser(res);
-            history.replace(from);
+            const login = {...newUser,...res};
+            setLoginUser(login);
+            if(loginUser.destination){
+             history.replace(from);
+            }
+            else{
+                history.replace(extra);
+            }
         })
    }
   
