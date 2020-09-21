@@ -75,8 +75,9 @@ const Login = () => {
        createAnAccountWithEmailAndPassword(firstName,lastName,email,password).then(res=>{
                 const login = {...newUser,...res};
                 setLoginUser(login);
-                if(login.success){
+                if(loginUser.success){
                     history.replace(extra);
+                    console.log(extra);
                 }
        })
     };
@@ -162,7 +163,7 @@ const Login = () => {
             {!loginUser.success && <p className='error-shows'>{loginUser.error}</p>}
            <input className='submit-btn' type="submit" value='Create an account' onClick={handleSubmit(onSubmit)} />
     </form>
-            <p style={{marginLeft:'50px'}}>Already have an account.<Link  style={{color:'#F9A51A'}}to='/signIn'>Login</Link></p>
+            <p style={{marginLeft:'75px'}}>Already have an account.<Link  style={{color:'#F9A51A'}}to='/signIn'>Login</Link></p>
              </div>
              <div className='googleOrFb'>
               <Button  onClick={googleSignIn} variant="outlined"><Avatar  className='avater' alt="Cindy Baker" src={googleLogo}  className={classes.small}/> Google </Button>

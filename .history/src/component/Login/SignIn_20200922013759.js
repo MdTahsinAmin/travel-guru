@@ -129,7 +129,7 @@ const SignIn = () => {
                     </div>
                     <Link className='forgetPassword' style={{color:'#F9A51A'}}>Forget Password</Link>
                 </div>
-                 {errorMessage &&<p className='error-shows' style={{textAlign: 'center',marginRight:'9px'}}>Please Verify Your Email</p>}
+                 {errorMessage &&<p className='error-shows' style={{textAlign: 'center'}}>Please Verify Your Email</p>}
                      <input type="submit" className='submit-btn' value="Login" onClick={handleSubmit(onSubmit)} />
                  </form>
                  {!loginUser.success && <p className='error-shows'>{loginUser.error}</p>}

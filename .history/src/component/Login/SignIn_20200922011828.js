@@ -91,6 +91,7 @@ const SignIn = () => {
     return (
         <div className='container sigIn-section'>
            <div className='input-box'>
+           {!errorMessage && <div className='verify'>Verify your email</div>}
             <h4 style={{marginLeft:'25px'}}>Login</h4>
              <div className ='input-group'>
                  <form onSubmit={e => e.preventDefault()}>
@@ -129,7 +130,7 @@ const SignIn = () => {
                     </div>
                     <Link className='forgetPassword' style={{color:'#F9A51A'}}>Forget Password</Link>
                 </div>
-                 {errorMessage &&<p className='error-shows' style={{textAlign: 'center',marginRight:'9px'}}>Please Verify Your Email</p>}
+                 {errorMessage &&<p className='error-shows' style={{textAlign: 'center'}}>Please Verify Your Email</p>}
                      <input type="submit" className='submit-btn' value="Login" onClick={handleSubmit(onSubmit)} />
                  </form>
                  {!loginUser.success && <p className='error-shows'>{loginUser.error}</p>}

@@ -162,7 +162,7 @@ const Login = () => {
             {!loginUser.success && <p className='error-shows'>{loginUser.error}</p>}
            <input className='submit-btn' type="submit" value='Create an account' onClick={handleSubmit(onSubmit)} />
     </form>
-            <p style={{marginLeft:'50px'}}>Already have an account.<Link  style={{color:'#F9A51A'}}to='/signIn'>Login</Link></p>
+            <p style={{marginLeft:'60px'}}>Already have an account.<Link  style={{color:'#F9A51A'}}to='/signIn'>Login</Link></p>
              </div>
              <div className='googleOrFb'>
               <Button  onClick={googleSignIn} variant="outlined"><Avatar  className='avater' alt="Cindy Baker" src={googleLogo}  className={classes.small}/> Google </Button>
