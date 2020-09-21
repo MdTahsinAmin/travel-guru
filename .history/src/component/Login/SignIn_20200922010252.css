@@ -1,0 +1,28 @@
+.input-box{
+    width: 500px;
+    height: 320px;
+    background: #ffffff;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 350px;
+    padding-top:20px;
+}
+.anotherGoogleOrFb{
+    margin-top: 35px;
+    margin-left:0px;
+    text-align: center;
+}
+.anotherGoogleOrFb button{
+    margin-top: 15px;
+  margin-left: 5px;
+   background:#ffff;
+   color:gray;
+   font-size: 15px;
+}
+.checkbox-light{
+    margin-right: 5px;
+}
+.forgetPassword{
+    margin-right:100px;
+}

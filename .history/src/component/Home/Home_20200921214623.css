@@ -1,0 +1,25 @@
+
+.location-information{
+    margin-top:85px;
+}
+.location-title{
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: normal;
+    color:#FFFFFF;
+    font-size:70px;
+}
+.location-description{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color:#FFFFFF;
+}
+.extra-body{
+    margin-left:150px;
+}
+.extra-body button{
+  
+}
+

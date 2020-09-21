@@ -1,0 +1,12 @@
+/*
+    border: '4px solid #FBBC04',
+*/
+
+.link-hover:hover{
+    border: 4px solid #FBBC04;
+    border-radius:20px;
+    transition: all .3s ease-in-out;
+    width: 270px;
+    height: 416px;
+    margin-right: px;
+}
