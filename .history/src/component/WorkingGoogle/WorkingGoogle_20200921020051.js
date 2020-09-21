@@ -2,10 +2,6 @@ import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import React, { useContext } from 'react';
 import { userContext } from '../../App';
 import mapStyle from './mapStyle';
-
-require('dotenv').config();
-
-
 const WorkingGoogle = () => {
  
     const [loginUser, setLoginUser] = useContext(userContext);
@@ -44,7 +40,7 @@ const WorkingGoogle = () => {
     }
 
     const {isLoaded , loadError} = useLoadScript({
-        googleMapsApiKey:process.env.GOOGLE_MAP_API_KEY,
+        googleMapsApiKey:'AIzaSyBWK_D-GT2Fu2YQO8ygvAuK1UTVXZTU9I0',
         libraries:['places']
     })
    
