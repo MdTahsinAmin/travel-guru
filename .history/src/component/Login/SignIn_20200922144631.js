@@ -39,7 +39,6 @@ const SignIn = () => {
     const [errorMessage , setErrorMessage] = useState(false);
     
     //console.log(loginUser);
-   
 
     const googleSignIn = () =>{
         let newUser ={...loginUser};
@@ -70,11 +69,9 @@ const SignIn = () => {
             }
         })
    }
-
    const onSubmit =  data =>{
        const {email, password} =data;
        let newUser ={...loginUser};
-       newUser.email = email
        signInWithEmailAndPassword(email, password).then(res =>{
                 const login = {...newUser,...res};
                 setLoginUser(login);
@@ -100,9 +97,7 @@ const SignIn = () => {
                 
        })
    }
-   //console.log(loginUser);
-   
-
+   console.log(loginUser);
 
     return (
         <div className='container sigIn-section'>
@@ -144,14 +139,14 @@ const SignIn = () => {
                     <label style={{fontWeight: '500'}} htmlFor="rememberMe">Remember Me</label>
                     </div>
                     <div>
-                    <Link onClick={()=>{resetPassword(loginUser.email);alert('Reset Password link sent')}} className='forgetPassword' style={{color:'#F9A51A'}}>Forget Password</Link>
+                    <Link className='forgetPassword' style={{color:'#F9A51A'}}>Forget Password</Link>
                     </div>
                 </div>
                  {(errorMessage) &&<p className='error-shows' style={{textAlign: 'center',marginRight:'9px'}}>Please Verify Your Email</p>}
                      <input type="submit" className='submit-btn' value="Login" onClick={handleSubmit(onSubmit)} />
                  </form>
                  {!loginUser.success && <p className='error-shows'>{loginUser.error}</p>}
-                 <p style={{marginLeft:'5px',marginTop:'5px',display:'inline'}}>Or Don't have an account.<Link  style={{color:'#F9A51A'}}to='/login'>Sign Up</Link></p>
+                 <p style={{marginLeft:'5px',marginTop:'5px',display:'inline'}}>Don't have an account.<Link  style={{color:'#F9A51A'}}to='/login'>Sign Up</Link></p>
              </div>
              <div className='anotherGoogleOrFb'>
               <Button  onClick={googleSignIn} variant="outlined"><Avatar  className='avater' alt="Cindy Baker" src={googleLogo}  className={classes.small}/> Google </Button>

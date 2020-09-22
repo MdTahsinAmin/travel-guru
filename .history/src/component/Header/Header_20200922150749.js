@@ -33,7 +33,7 @@ const Header = () => {
             { 
             loginUser.success && <p style={{fontSize:'18px',color:'white'}}>{loginUser.displayName}</p>
             }
-            {loginUser.isLogin && <p style={{fontSize:'18px',color:'white'}}>{loginUser.name}</p>}
+            {loginUser.isLogin && <p style={{fontSize:'18px',color:'white'}}>{loginUser.displayName}</p>}
         </Nav>
             { 
              !loginUser.success && <button onClick={handleHistory} className ="login-btn">Login</button>

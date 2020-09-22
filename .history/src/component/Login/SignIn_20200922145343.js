@@ -151,7 +151,7 @@ const SignIn = () => {
                      <input type="submit" className='submit-btn' value="Login" onClick={handleSubmit(onSubmit)} />
                  </form>
                  {!loginUser.success && <p className='error-shows'>{loginUser.error}</p>}
-                 <p style={{marginLeft:'5px',marginTop:'5px',display:'inline'}}>Or Don't have an account.<Link  style={{color:'#F9A51A'}}to='/login'>Sign Up</Link></p>
+                 <p style={{marginLeft:'5px',marginTop:'5px',display:'inline'}}>Don't have an account.<Link  style={{color:'#F9A51A'}}to='/login'>Sign Up</Link></p>
              </div>
              <div className='anotherGoogleOrFb'>
               <Button  onClick={googleSignIn} variant="outlined"><Avatar  className='avater' alt="Cindy Baker" src={googleLogo}  className={classes.small}/> Google </Button>
