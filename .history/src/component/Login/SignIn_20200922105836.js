@@ -9,6 +9,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { continueWithFacebook, continueWithGoogle, initializeLoginFramwork, signInWithEmailAndPassword,resetPassword } from './LoginManager';
 import { userContext } from '../../App';
 import { useForm } from 'react-hook-form';
+import Header from '../Header/Header';
 const useStyles = makeStyles((theme) => ({
     small: {
         width: theme.spacing(3),

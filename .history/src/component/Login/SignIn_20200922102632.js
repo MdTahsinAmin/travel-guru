@@ -9,6 +9,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { continueWithFacebook, continueWithGoogle, initializeLoginFramwork, signInWithEmailAndPassword,resetPassword } from './LoginManager';
 import { userContext } from '../../App';
 import { useForm } from 'react-hook-form';
+import Header from '../Header/Header';
 const useStyles = makeStyles((theme) => ({
     small: {
         width: theme.spacing(3),
@@ -127,14 +128,14 @@ const SignIn = () => {
                     <label style={{fontWeight: '500'}} htmlFor="rememberMe">Remember Me</label>
                     </div>
                     <div>
-                    <Link className='forgetPassword' style={{color:'#F9A51A'}}>Forget Password</Link>
+                    <Link className='forgetPassword' style={{color:'#F9A51A',marginLeft:'50px'}}>Forget Password</Link>
                     </div>
                 </div>
                  {errorMessage &&<p className='error-shows' style={{textAlign: 'center',marginRight:'9px'}}>Please Verify Your Email</p>}
                      <input type="submit" className='submit-btn' value="Login" onClick={handleSubmit(onSubmit)} />
                  </form>
                  {!loginUser.success && <p className='error-shows'>{loginUser.error}</p>}
-                 <p style={{marginLeft:'5px',marginTop:'5px',display:'inline'}}>Don't have an account.<Link  style={{color:'#F9A51A'}}to='/login'>Sign Up</Link></p>
+                 <p style={{marginLeft:'0px'}}>Don't have an account.<Link  style={{color:'#F9A51A'}}to='/login'>Create an account</Link></p>
              </div>
              <div className='anotherGoogleOrFb'>
               <Button  onClick={googleSignIn} variant="outlined"><Avatar  className='avater' alt="Cindy Baker" src={googleLogo}  className={classes.small}/> Google </Button>

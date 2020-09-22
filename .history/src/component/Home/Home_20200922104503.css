@@ -29,7 +29,7 @@
     cursor: pointer;
 }
 .extra-body div:hover{
-    color: #ffffff;
     background-color:rgb(47, 46, 51);
     transition:all .6s ease-in-out;
+    filter: brightness(700%);
 }

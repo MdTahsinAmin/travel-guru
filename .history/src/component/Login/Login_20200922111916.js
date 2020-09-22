@@ -75,7 +75,7 @@ const Login = () => {
        createAnAccountWithEmailAndPassword(firstName,lastName,email,password).then(res=>{
                 const login = {...newUser,...res};
                 setLoginUser(login);
-                if(login.success||loginUser.success){
+                if(login.success){
                     history.replace(extra);
                 }
        })
