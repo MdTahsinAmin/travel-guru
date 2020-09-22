@@ -40,6 +40,7 @@ const TravelingLocation = () => {
     let { from } = location.state || { from: { pathname: "/hotelInformation" } };
     const onSubmit = (data) =>{
           const newUser ={...loginUser ,...data};
+          newUser.description = newUser.description.trim();
           setLoginUser(newUser);
           history.replace(from);
     }

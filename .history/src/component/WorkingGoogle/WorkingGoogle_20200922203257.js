@@ -27,13 +27,12 @@ const WorkingGoogle = () => {
 
     let latitude;
     let longitude;
-    const destination = (loginUser.destination).trim();
-    console.log(destination);
-    if(destination ==='Cox’s Bazar'){
+   
+    if(loginUser.destination ===`Cox’s Bazar`){
         latitude = 21.433920;
         longitude = 91.987030;
     }
-    else if(destination ==='Sreemangal'){
+    else if(loginUser.destination ===`Sreemangal`){
         latitude = 24.310577;
         longitude = 91.725136;
     }
