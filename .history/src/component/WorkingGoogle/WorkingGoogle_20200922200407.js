@@ -32,7 +32,7 @@ const WorkingGoogle = () => {
         latitude = 24.310577;
         longitude = 91.725136;
     }
-    else if(loginUser.destination ==='Sundarbans '){
+    else if(loginUser.destination ==='Sundarbans'){
         latitude = 21.949726;
         longitude = 89.183327;
     }

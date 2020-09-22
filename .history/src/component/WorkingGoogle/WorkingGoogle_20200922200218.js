@@ -22,21 +22,19 @@ const WorkingGoogle = () => {
         disableDefaultUI: true,
         zoomControl:true
     }
-    
-
 
     let latitude;
     let longitude;
-   
+
     if(loginUser.destination ==='Sreemangal'){
         latitude = 24.310577;
         longitude = 91.725136;
     }
-    else if(loginUser.destination ==='Sundarbans '){
+    else if(loginUser.destination ==='Sundarbans'){
         latitude = 21.949726;
         longitude = 89.183327;
     }
-    else if(loginUser.destination ===`Cox’s Bazar`){
+    else{
         latitude = 21.433920;
         longitude = 91.987030;
     }
