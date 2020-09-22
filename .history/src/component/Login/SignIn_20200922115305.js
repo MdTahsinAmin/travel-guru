@@ -31,9 +31,7 @@ const SignIn = () => {
 
 
     const [loginUser, setLoginUser] = useContext(userContext);
-    loginUser.error = '';
-    setLoginUser(loginUser);
-    
+    console.log(loginUser);
     const classes = useStyles();
    
     initializeLoginFramwork();

@@ -45,9 +45,10 @@ const Login = () => {
 
     let { extra } = { extra: { pathname: "/signIn" } };
 
-    let myLocation = location.state;
+
        
     const [loginUser, setLoginUser] = useContext(userContext);
+    console.log(loginUser);
     const classes = useStyles();
 
     const googleSignIn = () =>{
@@ -76,9 +77,6 @@ const Login = () => {
                 setLoginUser(login);
                 if(login.success||loginUser.success){
                     history.replace(extra);
-                }
-                else{
-                    history.replace(myLocation);
                 }
        })
     };

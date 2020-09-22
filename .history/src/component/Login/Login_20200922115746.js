@@ -48,6 +48,8 @@ const Login = () => {
     let myLocation = location.state;
        
     const [loginUser, setLoginUser] = useContext(userContext);
+    loginUser.error = '';
+    setLoginUser(loginUser);
     const classes = useStyles();
 
     const googleSignIn = () =>{
