@@ -5,22 +5,18 @@
     background-color:#F9A51A;
     border-radius: 8px;
 }
-.checkBox{
-    margin-top: 15px;
-  
-}
 .input-box{
     width: 500px;
-    height: 370px;
+    height: 350px;
     background: #ffffff;
     border: 1px solid gray;
     box-sizing: border-box;
     border-radius: 4px;
-    margin-left: 365px;
+    margin-left: 350px;
     padding-top:20px;
 }
 .anotherGoogleOrFb{
-    margin-top: 55px;
+    margin-top:68px;
     margin-left:0px;
     text-align: center;
 }

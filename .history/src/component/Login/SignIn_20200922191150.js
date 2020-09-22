@@ -87,11 +87,11 @@ const SignIn = () => {
                 else{
                    
                    if((login.emailVerified||loginUser.emailVerified)){
-                      setErrorMessage(false);
+                     setErrorMessage(false);
                       history.replace(location.state);
                    }
                    else if(!(login.emailVerified||loginUser.emailVerified)){
-                     setErrorMessage(true);
+                    setErrorMessage(true);
                    }
                    else{
                        history.replace(location.state);
@@ -147,11 +147,11 @@ const SignIn = () => {
                     <Link onClick={()=>{resetPassword(loginUser.email);alert('Reset Password link sent')}} className='forgetPassword' style={{color:'#F9A51A'}}>Forget Password</Link>
                     </div>
                 </div>
-                  {(errorMessage) &&<p className='error-shows' style={{textAlign: 'center',marginRight:'50px'}}>Please Verify Your Email</p>}
+                 {(errorMessage) &&<p className='error-shows' style={{textAlign: 'center',marginRight:'9px'}}>Please Verify Your Email</p>}
                      <input type="submit" className='submit-btn' value="Login" onClick={handleSubmit(onSubmit)} />
                  </form>
-                 {loginUser.success ? <p></p> : <p className='error-shows'>{loginUser.error}</p>}
-                 <p style={{textAlign: 'center',marginLeft:'5px',marginTop:'5px',display:'inline'}}> Don't have an account.<Link  style={{color:'#F9A51A'}}to='/login'>Sign Up</Link></p>
+                 {!loginUser.success && <p className='error-shows'>{loginUser.error}</p>}
+                 <p style={{marginLeft:'5px',marginTop:'5px',display:'inline'}}> Don't have an account.<Link  style={{color:'#F9A51A'}}to='/login'>Sign Up</Link></p>
              </div>
              <div className='anotherGoogleOrFb'>
               <Button  onClick={googleSignIn} variant="outlined"><Avatar  className='avater' alt="Cindy Baker" src={googleLogo}  className={classes.small}/> Google </Button>
@@ -161,4 +161,5 @@ const SignIn = () => {
         </div>
     );
 };
+
 export default SignIn;

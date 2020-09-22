@@ -10,13 +10,13 @@
   
 }
 .input-box{
-    width: 500px;
-    height: 370px;
+    width: 515px;
+    height: 375px;
     background: #ffffff;
     border: 1px solid gray;
     box-sizing: border-box;
     border-radius: 4px;
-    margin-left: 365px;
+    margin-left: 350px;
     padding-top:20px;
 }
 .anotherGoogleOrFb{

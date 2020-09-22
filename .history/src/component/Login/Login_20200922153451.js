@@ -77,7 +77,6 @@ const Login = () => {
                 setLoginUser(login);
                 if(login.success||loginUser.success){
                     history.replace(extra);
-                    alert('Verification Email Sent');
                 }
                 else{
                     history.replace(myLocation);

@@ -87,11 +87,11 @@ const SignIn = () => {
                 else{
                    
                    if((login.emailVerified||loginUser.emailVerified)){
-                      setErrorMessage(false);
+                     setErrorMessage(false);
                       history.replace(location.state);
                    }
                    else if(!(login.emailVerified||loginUser.emailVerified)){
-                     setErrorMessage(true);
+                    setErrorMessage(true);
                    }
                    else{
                        history.replace(location.state);
@@ -150,7 +150,7 @@ const SignIn = () => {
                   {(errorMessage) &&<p className='error-shows' style={{textAlign: 'center',marginRight:'50px'}}>Please Verify Your Email</p>}
                      <input type="submit" className='submit-btn' value="Login" onClick={handleSubmit(onSubmit)} />
                  </form>
-                 {loginUser.success ? <p></p> : <p className='error-shows'>{loginUser.error}</p>}
+                 {loginUser.success ? <p className='error-shows'>Login successfully</p> : <p className='error-shows'>{loginUser.error}</p>}
                  <p style={{textAlign: 'center',marginLeft:'5px',marginTop:'5px',display:'inline'}}> Don't have an account.<Link  style={{color:'#F9A51A'}}to='/login'>Sign Up</Link></p>
              </div>
              <div className='anotherGoogleOrFb'>

@@ -11,7 +11,7 @@
 }
 .input-box{
     width: 500px;
-    height: 370px;
+    height: 375px;
     background: #ffffff;
     border: 1px solid gray;
     box-sizing: border-box;
@@ -20,7 +20,7 @@
     padding-top:20px;
 }
 .anotherGoogleOrFb{
-    margin-top: 55px;
+    margin-top: 65px;
     margin-left:0px;
     text-align: center;
 }
