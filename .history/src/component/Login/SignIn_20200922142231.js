@@ -82,16 +82,12 @@ const SignIn = () => {
                     history.replace(extra);
                 }
                 else{
-                   
-                   if((login.emailVerified||loginUser.emailVerified)){
-                     setErrorMessage(false);
-                      history.replace(location.state);
-                   }
-                   else if(!(login.emailVerified||loginUser.emailVerified)){
-                    setErrorMessage(true);
+                   if(!(login.emailVerified||loginUser.emailVerified)){
+                       setErrorMessage(true);
                    }
                    else{
                        history.replace(location.state);
+                       setErrorMessage(false);
                    }
                 }
                 

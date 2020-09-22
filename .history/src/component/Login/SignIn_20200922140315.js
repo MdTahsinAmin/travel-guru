@@ -31,6 +31,7 @@ const SignIn = () => {
 
 
     const [loginUser, setLoginUser] = useContext(userContext);
+    loginUser.error = '';
 
     const classes = useStyles();
    
@@ -78,20 +79,12 @@ const SignIn = () => {
                 if((loginUser.destination) && (login.emailVerified||loginUser.emailVerified)){
                   history.replace(from);
                 }
-                else if(!(loginUser.destination)&&((login.emailVerified||loginUser.emailVerified))){
+                else if(!(loginUser.destination)){
                     history.replace(extra);
                 }
                 else{
-                   
-                   if((login.emailVerified||loginUser.emailVerified)){
-                     setErrorMessage(false);
-                      history.replace(location.state);
-                   }
-                   else if(!(login.emailVerified||loginUser.emailVerified)){
-                    setErrorMessage(true);
-                   }
-                   else{
-                       history.replace(location.state);
+                   if(!(login.emailVerified||loginUser.emailVerified)){
+                       setErrorMessage(true);
                    }
                 }
                 
@@ -142,7 +135,7 @@ const SignIn = () => {
                     <Link className='forgetPassword' style={{color:'#F9A51A'}}>Forget Password</Link>
                     </div>
                 </div>
-                 {(errorMessage) &&<p className='error-shows' style={{textAlign: 'center',marginRight:'9px'}}>Please Verify Your Email</p>}
+                 {errorMessage &&<p className='error-shows' style={{textAlign: 'center',marginRight:'9px'}}>Please Verify Your Email</p>}
                      <input type="submit" className='submit-btn' value="Login" onClick={handleSubmit(onSubmit)} />
                  </form>
                  {!loginUser.success && <p className='error-shows'>{loginUser.error}</p>}

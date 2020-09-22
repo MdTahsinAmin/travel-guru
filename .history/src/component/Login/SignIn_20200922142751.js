@@ -85,7 +85,8 @@ const SignIn = () => {
                    
                    if((login.emailVerified||loginUser.emailVerified)){
                      setErrorMessage(false);
-                      history.replace(location.state);
+                     setLoginUser(login);
+                     history.replace(location.state);
                    }
                    else if(!(login.emailVerified||loginUser.emailVerified)){
                     setErrorMessage(true);
